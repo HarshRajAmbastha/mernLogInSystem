@@ -1,0 +1,25 @@
+.leftside ,.rightside{
+height: 38vh;
+width: 97%;
+font-family: 'Nunito', sans-serif;
+
+}
+@media screen and (min-width:768px) {
+    .leftside,.rightside{
+        height: 82vh;
+        font-size: 6.8vh;
+        font-family: 'Nunito', sans-serif;
+    }
+}
+.leftside{
+    background-color: violet;
+}
+.rightside{
+    background-color: white;
+    
+}
+.card-footer{
+    font-weight: 900;
+    background-color: whitesmoke;
+color: white;
+}
