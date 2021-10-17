@@ -4,48 +4,28 @@ import {useHistory} from "react-router-dom"
 
 
 export default function About() {
-    const history = useHistory();
-    const callAboutPage = async () => {
-        try {
-            const res = await fetch('/about', {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                },
-                credentials: "include"
-            })
-            const data = await res.json();
-            console.log(data);
-            if(!res.status===200){
-                const error=new Error(res.error);
-                throw error;
-            }
-
-
-        } catch (error) {
-            console.log(error)
-history.push("/login")
-        }
-    }
-
-    useEffect(() => {
-        callAboutPage()
-    }, [])
+    
+  
 
     return (
-        <>
+        <div className="abt-body">
             <div className=" d-flex justify-content-center align-items-center about">
                 Hi Harsh !! Nice to see you here :)
                 <br />
-<form method="GET">
-    <label htmlFor="">hadjkba</label>
-    <input type="text" />
-</form>
+                
 
             </div>
+            <div className="box box-item align-items-center justify-content-center">
+                    <div id="row-1" className="box-item">Id : 12345678</div>
+                    <div id="row-2" className="box-item">Professsion : Web Development</div>
+                    <div id="row-3" className="box-item">Lucky Number : 23</div>
+                    <div id="row-4" className="box-item">Email Id: a@gmail.com</div>
+                    <div id="row-5" className="box-item">Mobile No : 7878787878</div>
+                </div>
 
-
-        </>
+                <div class="card-footer text-muted d-flex justify-content-center align-items-center">
+    Designed and Developed by : Harsh Raj Ambastha
+  </div>
+        </div>
     )
 }

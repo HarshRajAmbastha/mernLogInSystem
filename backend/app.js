@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const bcrypt = require('bcryptjs')
 const jwt=require('jsonwebtoken')
-var cookieParser = require('cookie-parser')
 const app = express()
 const router = express.Router();
 const port = 5000
@@ -24,27 +23,8 @@ mongoose
   .then(() => console.log('Database connected.'))
   .catch(err => console.log(err));
 
-// const middleware = (req, res, next) => {
-//   console.log("middle")
-//   next()
-// }
-const authenticate =async (req,res,next)=>{
-try {
-  const token = req.cookies.jwtoken;
-  const decoded = jwt.verify(token, process.env.SECRET_KEY);
-        const rootUser = await User.findOne({_id:decoded._id, 'tokens.token': token})
-  if(!rootUser){
-    throw new Error('user not found')  
-  }
-  req.token=token;
-    req.rootUser=rootUser;
-    req.userID=rootUser._id;
-    next();
-} catch (error) {
-  res.status(401).send("Unthorized : no token provided")
-  console.log(error)
-}
-}
+
+
 
 
 app.get('/', (req, res) => {
@@ -122,9 +102,9 @@ app.post('/signin', async (req, res) => {
 
 //about page request
 
-app.get('/about', authenticate , (req, res) => {
+app.get('/about', (req, res) => {
   console.log("About")
-  res.send(req.rootUser)
+  res.send("About Page")
 })
 app.get('/forget', (req, res) => {
   res.cookie("harsh","test")
