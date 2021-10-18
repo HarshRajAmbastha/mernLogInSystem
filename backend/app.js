@@ -6,12 +6,13 @@ const jwt=require('jsonwebtoken')
 const app = express()
 const router = express.Router();
 const port = 5000
-
+const authenticate=require("./middleware/authenticate")
 
 dotenv.config({ path: './config.env' })
 const DB = process.env.DATABASE;
 app.use(express.json());
 const User = require('./model/userSchema')
+
 
 
 mongoose
@@ -49,7 +50,7 @@ app.post('/register', async (req, res) => {
       await user.save()
       res.status(201).json({ message: "user registered successfully" })
     }
-
+   
 
 
   } catch (error) {
@@ -102,9 +103,9 @@ app.post('/signin', async (req, res) => {
 
 //about page request
 
-app.get('/about', (req, res) => {
+app.get('/about',authenticate,  (req, res) => {
   console.log("About")
-  res.send("About Page")
+  res.send(req.rootUser)
 })
 app.get('/forget', (req, res) => {
   res.cookie("harsh","test")

@@ -32,12 +32,13 @@ export default function Signup() {
 
 
         const data = await res.json();
+        console.log(data.status)
         if (data.status === 422 || !data) {
 
-            window.alert("Registration Failed :(")
+            // window.alert("Registration Failed :(")
             console.log("Registration Failed :(")
         } else {
-            window.alert("Registration Successful :)")
+            // window.alert("Registration Successful :)")
             console.log("Registration Successful :)")
             history.push("/login")
         }

@@ -1,28 +1,13 @@
 .about{
-    height: 7vw;
+    height: 38.5vw;
     width: 100%;
     background-color: rgb(143, 209, 221);
     font-size: 4vw;
     font-weight: 700;
 }
-.box{
-    width: 50%;
-    margin-left: 350px;
-    height: 470px;
-    background-color: greenyellow;
-    display: grid;
-    grid-template-rows: 5 1fr ;
-    grid-template-columns: 2 1fr;
-}
-.box-item{
-    border: 3px solid gray;
-}
+
 .card-footer{
     font-weight: 900;
     background-color: whitesmoke;
 color: white;
-}
-.abt-body{
-    background-color: hotpink;
-    height: 600px;
 }
