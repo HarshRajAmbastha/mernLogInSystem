@@ -6,7 +6,7 @@
     background-attachment: fixed;
     background-size: cover;
     font-family: sans-serif;
-    height: 600px;
+    height: 591px;
    }
    .loginbox{
        margin-top: 20px;
@@ -83,3 +83,8 @@
    .loginbox a:hover{
        color: #ffc107;
    }
+   .card-footer{
+    font-weight: 900;
+    background-color: whitesmoke;
+color: white;
+}

@@ -5,17 +5,21 @@ import Signup from "./components/signup/Signup";
 import Login from "./components/login/Login";
 import About from "./components/about/About";
 import Reset from "./components/reset/Reset";
+import { useState } from "react";
 
 
 function App() {
+ 
   return (
+    
     <div className="App">
       <Navbar />
       <Switch>
         <Route exact path="/"><Body /></Route>
         <Route exact path="/signup"><Signup /></Route>
         <Route exact path="/login"><Login /></Route>
-        <Route exact path="/about"><About />
+        <Route exact path="/about">
+        <About/>
         
         </Route>
         <Route exact path="/reset"><Reset/></Route>

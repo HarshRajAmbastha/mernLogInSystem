@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./about.css"
 import {useHistory} from "react-router-dom"
 
 
 export default function About() {
     const history=useHistory();
+    
+   
     const callAboutPage=async()=>{
         try {
             const res=await fetch("/about",{
@@ -17,6 +19,8 @@ export default function About() {
             })
             const data=await res.json();
             console.log(data);
+          
+           
             if(!res.status===200){
                const error=new Error (res.error)
                throw error
@@ -24,7 +28,7 @@ export default function About() {
             
         } catch (error) {
             console.log(error)
-            // history.push("/about")
+            history.push("/login")
         }
     }
     
@@ -35,10 +39,19 @@ export default function About() {
     return (
         <div className="abt-body">
             <div className=" d-flex justify-content-center align-items-center about">
-                You have successfully logged in!!
+                
+                Name:{sessionStorage.getItem("name")}
                 <br />
-                 Nice to see you here :)
+                Id:{sessionStorage.getItem("id")}
                 <br />
+                Email:{sessionStorage.getItem("email")}
+                <br />
+                Phone:{sessionStorage.getItem("phone")}
+                <br />
+                Work:{sessionStorage.getItem("work")}
+                
+                
+
                 
 
             </div>

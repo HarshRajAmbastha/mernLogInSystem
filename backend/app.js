@@ -6,7 +6,7 @@ const jwt=require('jsonwebtoken')
 const app = express()
 const router = express.Router();
 const port = 5000
-const authenticate=require("./middleware/authenticate")
+const verify=require("./middleware/authenticate")
 
 dotenv.config({ path: './config.env' })
 const DB = process.env.DATABASE;
@@ -77,19 +77,29 @@ app.post('/signin', async (req, res) => {
   
     if (userLogin) {
       const isMatch = await bcrypt.compare(password, userLogin.password)
-      token = await userLogin.generateAuthToken();
-      console.log(token)
+      // token = await userLogin.generateAuthToken();
+      // console.log(token)
 
-      res.cookie("jwtoken",token,{
-        expires:new Date(Date.now()+25892000000),
-        httpOnly:true
+      // res.cookie("jwtoken",token,{
+      //   expires:new Date(Date.now()+25892000000),
+      //   httpOnly:true
 
-      })
+      // })
+      
       if (!isMatch) {
         res.status(400).json({ error: "Invalid Credentials" })
       }
       else {
-        res.status(200).json({ message: "Login Success" })
+        // res.status(200).json({ message: "Login Success" })
+        const accessToken = jwt.sign(
+          { id: userLogin._id },
+          process.env.SECRET_KEY,
+          { expiresIn: "5d" }
+        );
+        console.log(accessToken);
+        console.log("I am here")
+        const { password, ...info } = userLogin._doc;
+        res.status(200).json({ ...info, accessToken });
       }
     }
     else {
@@ -103,9 +113,9 @@ app.post('/signin', async (req, res) => {
 
 //about page request
 
-app.get('/about',authenticate,  (req, res) => {
+app.get('/about',verify,  (req, res) => {
   console.log("About")
-  res.send(req.rootUser)
+  res.send(req.user)
 })
 app.get('/forget', (req, res) => {
   res.cookie("harsh","test")

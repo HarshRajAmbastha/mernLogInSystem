@@ -4,6 +4,7 @@ import "./login.css"
 
 export default function Login() {
     let res;
+   
     const history=useHistory()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -20,11 +21,18 @@ export default function Login() {
                 email,  password
             })
            })
-            const data =  res.json();
+            const data = await res.json();
+            console.log(data)
+            sessionStorage.setItem("name",data.name)
+            sessionStorage.setItem("id",data._id)
+            sessionStorage.setItem("email",data.email)
+            sessionStorage.setItem("phone",data.phone)
+            sessionStorage.setItem("work",data.work)
         if (res.status === 400|| !data) {
             window.alert("Invalid Credentials")
             console.log("Registration Failed :(")
         } else {
+            
             window.alert("Login Successful :)")
             console.log("Registration Successful :)")
             history.push("/about")
@@ -57,6 +65,9 @@ export default function Login() {
 
                 </div>
             </div>
+            <div class="card-footer text-muted d-flex justify-content-center align-items-center">
+    Designed and Developed by : Harsh Raj Ambastha
+  </div>
         </>
     )
 }
