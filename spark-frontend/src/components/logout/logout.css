@@ -1,0 +1,22 @@
+img{
+    height: 3vw;
+    width: 6vw;
+    border-radius: 10px;
+    margin-right: 1vw;
+}
+@media only screen and (max-width: 990px){
+    img{
+        height:12vw ;
+        width: 14vw;
+    }
+    
+}
+@media only screen and (max-width: 990px) and (min-width: 600px){
+    img{
+        height:5vw ;
+        width: 5vw;
+    }
+}
+.navbar{
+    font-family: 'Raleway', sans-serif;
+}

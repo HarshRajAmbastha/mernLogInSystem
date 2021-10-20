@@ -37,30 +37,6 @@ export default function About() {
   }, [])
 
     return (
-//         <div className="abt-body">
-//             <div className=" d-flex justify-content-center align-items-center about">
-                
-//                 Name:
-//                 <br />
-//                 Id:{sessionStorage.getItem("id")}
-//                 <br />
-//                 Email:{sessionStorage.getItem("email")}
-//                 <br />
-//                 Phone:{sessionStorage.getItem("phone")}
-//                 <br />
-//                 Work:{sessionStorage.getItem("work")}
-                
-                
-
-                
-
-//             </div>
-           
-
-//                 <div class="card-footer text-muted d-flex justify-content-center align-items-center">
-//     Designed and Developed by : Harsh Raj Ambastha
-//   </div>
-//         </div>
 <div className="abt">
 <div className="card1 d-flex justify-content-center align-items-center">
     <div className="pic ">
